@@ -4,8 +4,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { Sidenav } from './shared/sidenav/sidenav';
-import { Footer } from './shared/footer/footer';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { DashboardComponent } from './dashboard/dashboard.component/dashboard.component';
 
 @NgModule({
   exports: [
@@ -13,11 +15,17 @@ import { Footer } from './shared/footer/footer';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule
   ],
   declarations: [
-    Sidenav,
-    Footer
+  
+    DashboardComponent
   ]
 })
 export class MaterialModule { }

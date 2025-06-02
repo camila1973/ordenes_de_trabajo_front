@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="login-content">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="Logo INGNOVAC">
+    </div>
+
+    <!-- FORMULARIO -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-content">
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="email" type="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="login-button" type="submit">
+        INGRESAR
+      </button>
+    </form>
+
+  </div>
+</div>
