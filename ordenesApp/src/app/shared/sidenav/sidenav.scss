@@ -1,0 +1,151 @@
+// sidenav.component.scss
+.sidenav-container {
+  height: 100vh;
+
+  .sidenav {
+    width: 250px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #e9ecef;
+    transition: width 0.3s ease;
+
+    &.collapsed {
+      width: 80px;
+
+      .sidenav-header {
+        .logo {
+          display: none;
+        }
+
+        .toggle-btn {
+          margin: 0 auto;
+        }
+      }
+
+      .nav-item {
+        justify-content: center;
+        padding: 12px 10px;
+
+        .nav-icon {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .sidenav-header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e9ecef;
+
+      .logo {
+        height: 40px;
+        width: auto;
+        transition: opacity 0.3s ease;
+      }
+
+      .toggle-btn {
+        background: none;
+        border: none;
+        color: #4fc3d7;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: rgba(79, 195, 215, 0.1);
+        }
+
+        mat-icon {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .sidenav-nav {
+      padding: 10px 0;
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:hover {
+          background-color: #e9ecef;
+        }
+
+        &.active {
+          background-color: #4fc3d7;
+          color: white;
+
+          .nav-icon,
+          .nav-arrow {
+            color: white;
+          }
+        }
+
+        .nav-icon {
+          font-size: 20px;
+          margin-right: 15px;
+          color: #6c757d;
+          transition: color 0.3s ease;
+        }
+
+        .nav-text {
+          flex: 1;
+          font-size: 14px;
+          font-weight: 500;
+          color: #495057;
+          transition: color 0.3s ease;
+        }
+
+        .nav-arrow {
+          font-size: 18px;
+          color: #6c757d;
+          transition: all 0.3s ease;
+        }
+
+        &.active .nav-text {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .main-content {
+    background-color: #ffffff;
+    padding: 0;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .sidenav-container {
+    .sidenav {
+      width: 200px;
+
+      .nav-item {
+        padding: 10px 15px;
+
+        .nav-text {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+// Personalización de Angular Material
+::ng-deep {
+  .mat-drawer-container {
+    background-color: #ffffff;
+  }
+
+  .mat-drawer {
+    border-right: 1px solid #e9ecef !important;
+  }
+}
