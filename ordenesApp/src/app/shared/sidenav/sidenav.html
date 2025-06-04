@@ -1,114 +1,346 @@
-<!-- sidenav.component.html -->
+<!-- Toolbar fuera del sidenav-container -->
+<mat-toolbar>
+  <button mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/logo.png" alt="Logo Ingnovac" class="logo" />
+</mat-toolbar>
+
 <mat-sidenav-container class="sidenav-container">
   <!-- SIDEBAR -->
-  <mat-sidenav #sidenav mode="side" opened="true" class="sidenav" [class.collapsed]="isCollapsed">
-
-    <!-- HEADER CON TOGGLE -->
-    <div class="sidenav-header">
-      <img src="assets/logo.png" alt="Logo INGNOVAC" class="logo" *ngIf="!isCollapsed">
-      <button mat-icon-button class="toggle-btn" (click)="toggleSidenav()">
-        <mat-icon>{{ isCollapsed ? 'menu' : 'menu_open' }}</mat-icon>
-      </button>
-    </div>
-
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened="true"
+    class="sidenav"
+    [class.collapsed]="isCollapsed"
+    [class.opened]="!isCollapsed"
+  >
     <!-- NAVIGATION MENU -->
     <nav class="sidenav-nav">
-
       <!-- Dashboard -->
-      <div class="nav-item" [class.active]="activeRoute === 'dashboard'" (click)="navigate('dashboard')"
-           [matTooltip]="isCollapsed ? 'Dashboard' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">dashboard</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Dashboard</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon class="nav-icon"
+              [matTooltip]="isCollapsed ? 'Dashboard' : ''"
+                matTooltipPosition="right"
+              >dashboard</mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Dashboard</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('usuarios/crear')">
+              <span>Dashboard report</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('usuarios/listar')">
+              <span>Listar usuarios</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Usuarios -->
-      <div class="nav-item" [class.active]="activeRoute === 'usuarios'" (click)="navigate('usuarios')"
-           [matTooltip]="isCollapsed ? 'Usuarios' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">people</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Usuarios</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon class="nav-icon"
+              [matTooltip]="isCollapsed ? 'Usuarios' : ''"
+                matTooltipPosition="right"
+              >people</mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Usuarios</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('usuarios/crear')">
+              <span>Crear usuario</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('usuarios/listar')">
+              <span>Listar usuarios</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Órdenes de trabajo -->
-      <div class="nav-item" [class.active]="activeRoute === 'ordenes'" (click)="navigate('ordenes')"
-           [matTooltip]="isCollapsed ? 'Órdenes de trabajo' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">assignment</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Órdenes de trabajo</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'Ordenes_de_trabajo'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Órdenes de trabajo' : ''"
+                matTooltipPosition="right"
+              >assignment</mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed"
+                >Ordenes de trabajo</span
+              >
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('usuarios/crear')">
+              <span>Crear usuario</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('usuarios/listar')">
+              <span>Listar usuarios</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Empresas -->
-      <div class="nav-item" [class.active]="activeRoute === 'empresas'" (click)="navigate('empresas')"
-           [matTooltip]="isCollapsed ? 'Empresas' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">business</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Empresas</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'empresas'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Empresas' : ''"
+                matTooltipPosition="right"
+                >business</mat-icon
+              >
+              <span class="nav-text" *ngIf="!isCollapsed">Empresas</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('usuarios/crear')">
+              <span>Crear Empresa</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('usuarios/listar')">
+              <span>Listar Empresa</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Propietarios -->
-      <div class="nav-item" [class.active]="activeRoute === 'propietarios'" (click)="navigate('propietarios')"
-           [matTooltip]="isCollapsed ? 'Propietarios' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">person</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Propietarios</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'propietarios'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Propietarios' : ''"
+                matTooltipPosition="right"
+              >
+                person
+              </mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Propietarios</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('usuarios/crear')">
+              <span>Crear Propietario</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('usuarios/listar')">
+              <span>Listar Propietarios</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Vehículos -->
-      <div class="nav-item" [class.active]="activeRoute === 'vehiculos'" (click)="navigate('vehiculos')"
-           [matTooltip]="isCollapsed ? 'Vehículos' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">directions_car</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Vehículos</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'vehiculos'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Vehículos' : ''"
+                matTooltipPosition="right"
+              >
+                directions_bus
+              </mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Propietarios</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('vehiculos/crear')">
+              <span>Crear Vehículos</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('vehiculos/listar')">
+              <span>Listar Vehículos</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Inventarios -->
-      <div class="nav-item" [class.active]="activeRoute === 'inventarios'" (click)="navigate('inventarios')"
-           [matTooltip]="isCollapsed ? 'Inventarios' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">inventory</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Inventarios</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'inventarios'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Inventarios' : ''"
+                matTooltipPosition="right"
+              >
+                inventory
+              </mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Inventarios</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('vehiculos/crear')">
+              <span>Crear Vehículos</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('vehiculos/listar')">
+              <span>Listar Vehículos</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Insumos -->
-      <div class="nav-item" [class.active]="activeRoute === 'insumos'" (click)="navigate('insumos')"
-           [matTooltip]="isCollapsed ? 'Insumos' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">build</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Insumos</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'Insumos'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Insumos' : ''"
+                matTooltipPosition="right"
+              >
+                build
+              </mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Insumos</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('vehiculos/crear')">
+              <span>Crear Vehículos</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('vehiculos/listar')">
+              <span>Listar Vehículos</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Ubicaciones -->
-      <div class="nav-item" [class.active]="activeRoute === 'ubicaciones'" (click)="navigate('ubicaciones')"
-           [matTooltip]="isCollapsed ? 'Ubicaciones' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">place</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Ubicaciones</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'Ubicaciones'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Ubicaciones' : ''"
+                matTooltipPosition="right"
+              >
+                place
+              </mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Ubicaciones</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('vehiculos/crear')">
+              <span>Crear Vehículos</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('vehiculos/listar')">
+              <span>Listar Vehículos</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Reportes -->
-      <div class="nav-item" [class.active]="activeRoute === 'reportes'" (click)="navigate('reportes')"
-           [matTooltip]="isCollapsed ? 'Reportes' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">assessment</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Reportes</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'Reportes'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Reportes' : ''"
+                matTooltipPosition="right"
+              >
+                assessment
+              </mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed">Reportes</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('vehiculos/crear')">
+              <span>Crear Vehículos</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('vehiculos/listar')">
+              <span>Listar Vehículos</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
 
       <!-- Parámetros del sistema -->
-      <div class="nav-item" [class.active]="activeRoute === 'parametros'" (click)="navigate('parametros')"
-           [matTooltip]="isCollapsed ? 'Parámetros del sistema' : ''" matTooltipPosition="right">
-        <mat-icon class="nav-icon">settings</mat-icon>
-        <span class="nav-text" *ngIf="!isCollapsed">Parámetros del sistema</span>
-        <mat-icon class="nav-arrow" *ngIf="!isCollapsed">keyboard_arrow_down</mat-icon>
-      </div>
+      <mat-accordion class="nav-accordion">
+        <mat-expansion-panel [expanded]="activeRoute === 'parametros'">
+          <mat-expansion-panel-header
+            (click)="expandSidenavIfCollapsed($event)"
+          >
+            <mat-panel-title>
+              <mat-icon
+                class="nav-icon"
+                [matTooltip]="isCollapsed ? 'Parámetros' : ''"
+                matTooltipPosition="right"
+              >
+                settings
+              </mat-icon>
+              <span class="nav-text" *ngIf="!isCollapsed"
+                >Parámetros del sistema</span
+              >
+            </mat-panel-title>
+          </mat-expansion-panel-header>
 
+          <mat-nav-list *ngIf="!isCollapsed">
+            <mat-list-item (click)="navigate('vehiculos/crear')">
+              <span>Crear Vehículos</span>
+            </mat-list-item>
+            <mat-list-item (click)="navigate('vehiculos/listar')">
+              <span>Listar Vehículos</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
     </nav>
   </mat-sidenav>
 
   <!-- MAIN CONTENT -->
-  <mat-sidenav-content class="main-content">
-    <!-- Aquí va el contenido de cada página -->
-    <router-outlet></router-outlet>
+  <mat-sidenav-content
+    class="main-content"
+    [class.collapsed]="isCollapsed"
+    [class.opened]="!isCollapsed"
+  >
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
-
 </mat-sidenav-container>
