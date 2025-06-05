@@ -1,9 +1,12 @@
+import { UserCreateComponent } from './user/user-create.component/user-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserLogin } from './user/user-login/user-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component/dashboard.component';
 import { AuthGuard } from './guards/auth-guard';
 import { SidenavComponent } from './shared/sidenav/sidenav';
+import { UserListComponent } from './user/user-list.component/user-list.component';
+
 
 
 const routes: Routes = [
@@ -13,8 +16,8 @@ const routes: Routes = [
     component: SidenavComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      // { path: 'usuarios', component: UsuariosComponent },
-      // { path: 'ordenes', component: OrdenesComponent },
+      { path: 'create', component: UserCreateComponent },
+      { path: 'user/list', component: UserListComponent},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
     ]
   }
