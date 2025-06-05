@@ -34,7 +34,7 @@
           </mat-expansion-panel-header>
 
           <mat-nav-list *ngIf="!isCollapsed">
-            <mat-list-item (click)="navigate('usuarios/crear')">
+            <mat-list-item (click)="navigate('')">
               <span>Dashboard report</span>
             </mat-list-item>
             <mat-list-item (click)="navigate('usuarios/listar')">
@@ -60,10 +60,10 @@
           </mat-expansion-panel-header>
 
           <mat-nav-list *ngIf="!isCollapsed">
-            <mat-list-item (click)="navigate('usuarios/crear')">
+            <mat-list-item (click)="navigate('create')">
               <span>Crear usuario</span>
             </mat-list-item>
-            <mat-list-item (click)="navigate('usuarios/listar')">
+            <mat-list-item (click)="navigate('user/list')">
               <span>Listar usuarios</span>
             </mat-list-item>
           </mat-nav-list>

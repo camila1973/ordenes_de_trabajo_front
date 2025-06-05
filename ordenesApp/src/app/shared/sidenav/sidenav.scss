@@ -15,7 +15,7 @@
 }
 
 .sidenav-container {
-   height: 650px;
+   height: 100vh;
   .sidenav {
     background-color: #f8f9fa;
     border-right: 1px solid #e9ecef;
@@ -24,8 +24,8 @@
     width: 80px;
   }
     &.opened{
-      width: 250
-      ;
+      width: 15%;
+  min-width: 250px
   }
 
       .nav-icon {

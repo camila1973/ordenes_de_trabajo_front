@@ -1,0 +1,22 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; // espacio entre los campos
+  max-width: 500px; // opcional, para que no se vea tan ancho
+  margin: 0 auto; // centrar horizontalmente
+  padding: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.snackbar-success {
+  background-color: #4caf50; // verde
+  color: #fff;
+}
+
+.snackbar-error {
+  background-color: #f44336; // rojo
+  color: #fff;
+}

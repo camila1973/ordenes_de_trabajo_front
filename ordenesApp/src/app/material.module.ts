@@ -4,10 +4,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { DashboardComponent } from './dashboard/dashboard.component/dashboard.component';
+import { MatSelectModule } from '@angular/material/select';
+import { UserListComponent } from './user/user-list.component/user-list.component';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   exports: [
@@ -21,11 +26,16 @@ import { DashboardComponent } from './dashboard/dashboard.component/dashboard.co
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatSnackBarModule,
   ],
   declarations: [
-  
-    DashboardComponent
+
+    DashboardComponent,
   ]
 })
 export class MaterialModule { }
