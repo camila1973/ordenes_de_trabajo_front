@@ -20,13 +20,24 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  login(data: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, data).pipe(
-      tap((response) => {
-        localStorage.setItem('token', response.access_token);
-      })
-    );
-  }
+login(data: LoginRequest): Observable<LoginResponse> {
+  const body = new URLSearchParams();
+  body.set('username', data.email);  // 👈 el backend espera 'username'
+  body.set('password', data.password);
+
+  return this.http.post<LoginResponse>(
+    `${this.baseUrl}/auth/login`,
+    body.toString(),
+    {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }
+  ).pipe(
+    tap((response) => {
+      localStorage.setItem('token', response.access_token);
+    })
+  );
+}
+
 
   logout(): void {
     localStorage.removeItem('token');
