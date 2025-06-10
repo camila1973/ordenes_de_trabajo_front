@@ -14,11 +14,12 @@ const routes: Routes = [
  {
     path: '',
     component: SidenavComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'create', component: UserCreateComponent },
       { path: 'user/list', component: UserListComponent},
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+      { path: '', redirectTo: '/login', pathMatch: 'full' }
     ]
   }
 ];
