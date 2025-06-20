@@ -8,6 +8,7 @@ import { UserModule } from './user/user-module';
 import { authInterceptorFn } from './interceptors/auth.interceptors';
 import { CityModule } from './city/city-module';
 import { MatSort } from '@angular/material/sort';
+import { CompanyModule } from './company/company-module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatSort } from '@angular/material/sort';
     MatSort,
     MaterialModule,
     UserModule,
-    CityModule
+    CityModule,
+    CompanyModule
 
   ],
   providers: [

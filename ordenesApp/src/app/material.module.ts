@@ -13,6 +13,7 @@ import { UserListComponent } from './user/user-list.component/user-list.componen
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { CompanyCreateComponent } from './company/company-create.component/company-create.component';
 
 
 
@@ -37,7 +38,6 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatSortModule
   ],
   declarations: [
-
   ]
 })
 export class MaterialModule { }

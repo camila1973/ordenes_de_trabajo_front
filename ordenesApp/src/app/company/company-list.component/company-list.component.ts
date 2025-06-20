@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CompanyService } from '../../services/company.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CompanyCreateComponent } from '../company-create.component/company-create.component';
 
 @Component({
   selector: 'app-company-list.component',
@@ -40,5 +41,33 @@ loadCompanies(): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+    openCreateDialog(): void {
+    const dialogRef = this.dialog.open(CompanyCreateComponent, {
+      width: '350px',
+      height: 'auto',
+      maxHeight: '90vh'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // refresca la lista
+        this.loadCompanies();
+      }
+    });
+
+  }
+
+  openEditDialog(company: Company): void {
+    const dialogRef = this.dialog.open(CompanyCreateComponent, {
+      width: '350px',
+      data: company
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadCompanies();
+      }
+    });}
 
 }

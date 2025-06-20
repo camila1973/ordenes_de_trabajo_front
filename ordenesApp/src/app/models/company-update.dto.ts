@@ -1,5 +1,5 @@
-
-export interface CompanyCreate {
+export interface CompanyUpdate {
+  id:number;
   name: String;
   email:String;
   phone:String;
