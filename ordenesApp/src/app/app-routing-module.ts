@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component/dashboard.co
 import { AuthGuard } from './guards/auth-guard';
 import { SidenavComponent } from './shared/sidenav/sidenav';
 import { UserListComponent } from './user/user-list.component/user-list.component';
+import { CityListComponent } from './city/city-list.component/city-list.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'create', component: UserCreateComponent },
       { path: 'user/list', component: UserListComponent},
+      { path: 'city/list', component: CityListComponent},
       { path: '', redirectTo: '/login', pathMatch: 'full' }
     ]
   }

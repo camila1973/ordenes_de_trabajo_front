@@ -1,0 +1,17 @@
+<div class="dialog-container">
+  <h2 class="dialog-title">{{ data ? 'Editar Ciudad' : 'Crear Ciudad' }}</h2>
+
+  <form [formGroup]="cityForm" (ngSubmit)="onSubmit()" class="form-group">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre*</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="cityForm.get('name')?.hasError('required')">
+        El nombre es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? 'Editar Ciudad' : 'Crear Ciudad' }}
+    </button>
+  </form>
+</div>

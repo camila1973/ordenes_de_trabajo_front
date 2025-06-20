@@ -6,6 +6,8 @@ import { App } from './app';
 import { MaterialModule } from './material.module';
 import { UserModule } from './user/user-module';
 import { authInterceptorFn } from './interceptors/auth.interceptors';
+import { CityModule } from './city/city-module';
+import { MatSort } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,10 @@ import { authInterceptorFn } from './interceptors/auth.interceptors';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatSort,
     MaterialModule,
-    UserModule
+    UserModule,
+    CityModule
 
   ],
   providers: [
