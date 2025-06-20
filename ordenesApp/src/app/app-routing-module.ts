@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth-guard';
 import { SidenavComponent } from './shared/sidenav/sidenav';
 import { UserListComponent } from './user/user-list.component/user-list.component';
 import { CityListComponent } from './city/city-list.component/city-list.component';
+import { CompanyListComponent } from './company/company-list.component/company-list.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'create', component: UserCreateComponent },
       { path: 'user/list', component: UserListComponent},
       { path: 'city/list', component: CityListComponent},
+      {path: 'company/list',component:CompanyListComponent},
       { path: '', redirectTo: '/login', pathMatch: 'full' }
     ]
   }

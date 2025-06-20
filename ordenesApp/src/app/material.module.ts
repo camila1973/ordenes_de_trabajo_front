@@ -12,9 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { UserListComponent } from './user/user-list.component/user-list.component';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CityListComponent } from './city/city-list.component/city-list.component';
-import { CityCreateComponent } from './city/city-create.component/city-create.component';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+
 
 
 @NgModule({
